@@ -45,7 +45,7 @@
 
 ## Adding a web application workspace
 
-1. Add NextJS application
+1. Add NextJS workspace for the application
 
    > npm init -w apps/nextjs
 
