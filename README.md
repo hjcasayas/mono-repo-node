@@ -51,7 +51,7 @@
 
 2. Add NextJS dependencies
 
-   > npm install next@latest react@latest react-dom@latest
+   > npm install next@latest react@latest react-dom@latest  
    > npm install --save-dev @types/react
 
 3. Add an empty tsconfig.json inside the generated app/nextjs directory
