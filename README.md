@@ -31,13 +31,13 @@
      > npx commitizen init cz-conventional-changelog --save-dev --save-exact
    - update package.json scripts
 
-     > ```json
-     > ...
-     > "scripts": {
-     >    ...
-     >    "git:commit": "cz"
-     > }
-     > ```
+     ```json
+     ...
+     "scripts": {
+        ...
+        "git:commit": "cz"
+     }
+     ```
 
    - run script
 
@@ -57,30 +57,67 @@
 3. Add an empty tsconfig.json inside the generated app/nextjs directory
 4. Update package.json script inside the generated app/nextjs directory
 
-   > ```json
-   >  ...
-   > "scripts": {
-   >    ...
-   >    "dev": "next dev",
-   >    "build": "next build",
-   >    "start": "next start",
-   >    "lint": "next lint"
-   > }
-   >
-   > ```
+   ```json
+    ...
+   "scripts": {
+      ...
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+   }
+
+   ```
 
 5. Update the root package.json scripts
 
-   > ```json
-   >  ...
-   > "scripts": {
-   >    ...
-   >    "dev:apps:nextjs": "npm run dev --workspace nextjs --if-present",
-   >    "build:apps:nextjs": "npm run build --workspace nextjs --if-present",
-   >    "start:apps:nextjs": "next start --workspace nextjs --if-present",
-   >    "lint:apps:nextjs": "next lint --workspace nextjs --if-present"
-   > }
-   > ```
+   ```json
+    ...
+   "scripts": {
+      ...
+      "dev:apps:nextjs": "npm run dev --workspace nextjs --if-present",
+      "build:apps:nextjs": "npm run build --workspace nextjs --if-present",
+      "start:apps:nextjs": "next start --workspace nextjs --if-present",
+      "lint:apps:nextjs": "next lint --workspace nextjs --if-present"
+   }
+   ```
 
 6. Run dev to update the empty tsconfig.json
    > npm run dev:apps:nextjs
+
+## Add library workspace
+
+1. Add domain workspace for the library
+
+   > npm init -w libs/domain
+
+2. Go inside the generated domain directory and initialize typescript
+
+   > npx tsc --init
+
+3. Update tsconfig.json
+
+   ```json
+   {
+     "extends": "../../tsconfig.lib.json"
+   }
+   ```
+
+4. Install the library to app
+
+   > npm install ./libs/domain -w nextjs
+
+5. Set tsconfig.json reference of the app to the library path
+
+   ```json
+   {
+     ...
+     "references": [{ "path": "../../libs/domain/" }]
+   }
+   ```
+
+6. Import functionalities from library to app
+
+   ```javascript
+   Import { greeting } from 'domain';
+   ```
