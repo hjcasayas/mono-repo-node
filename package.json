@@ -4,13 +4,21 @@
   "description": "A monorepos with npm workspaces and typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:apps:nextjs": "npm run dev --workspace nextjs --if-present",
+    "build:apps:nextjs": "npm run build --workspace nextjs --if-present",
+    "start:apps:nextjs": "npm run start --workspace nextjs --if-present",
+    "lint:apps:nextjs": "npm run lint --workspace nextjs --if-present",
+    "dev:all": "npm run dev --workspaces --if-present",
+    "build:all": "npm run build --workspaces --if-present",
+    "start:all": "npm run start --workspaces --if-present",
+    "lint:all": "npm run lint --workspaces --if-present",
     "git:commit": "cz"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^18.2.74",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "typescript": "^5.4.4"
@@ -22,5 +30,10 @@
   },
   "workspaces": [
     "apps/nextjs"
-  ]
+  ],
+  "dependencies": {
+    "next": "^14.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
