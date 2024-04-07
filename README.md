@@ -24,12 +24,15 @@
 
 ## Optional packages
 
-1. commitizen
+1. [commitizen](https://github.com/commitizen/cz-cli)
 
-   > npm install --save-dev commitizen
+   > npm install --save-dev commitizen  
+   > npx commitizen init cz-conventional-changelog --save-dev --save-exact
 
    > ...  
    > "scripts": {  
    >  ...  
    >  "git:commit": "cz"  
    > }
+
+   > npm run git:commit
