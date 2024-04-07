@@ -12,6 +12,6 @@
   "author": "hjcasayas",
   "license": "ISC",
   "dependencies": {
-    "domain": "file:../../libs/domain"
+    "@hjcasayas/domain": "file:../../libs/domain"
   }
 }
