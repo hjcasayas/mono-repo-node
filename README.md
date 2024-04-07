@@ -12,7 +12,7 @@
 
 3. Initialize typescript
 
-   > npx nx tsc --init
+   > npx tsc --init
 
 4. Update and add typescript configurations
 
