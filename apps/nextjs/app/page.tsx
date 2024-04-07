@@ -1,3 +1,6 @@
+import { greet } from "domain";
+
 export default function AppPage() {
-  return <p>app-page works!</p>;
+  const greeting = greet("Aziel");
+  return <p>{greeting}</p>;
 }

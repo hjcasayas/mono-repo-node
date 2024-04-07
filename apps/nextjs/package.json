@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "NextJS web app",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,5 +10,8 @@
     "lint": "next lint"
   },
   "author": "hjcasayas",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "domain": "file:../../libs/domain"
+  }
 }
