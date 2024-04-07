@@ -14,7 +14,7 @@
 
    > npx nx tsc --init
 
-4. Add update and add typescript configurations
+4. Update and add typescript configurations
 
    - tsconfig.base.json
    - tsconfig.dom.json
@@ -26,13 +26,61 @@
 
 1. [commitizen](https://github.com/commitizen/cz-cli)
 
-   > npm install --save-dev commitizen  
-   > npx commitizen init cz-conventional-changelog --save-dev --save-exact
+   - install
+     > npm install --save-dev commitizen  
+     > npx commitizen init cz-conventional-changelog --save-dev --save-exact
+   - update package.json scripts
 
-   > ...  
-   > "scripts": {  
-   >  ...  
-   >  "git:commit": "cz"  
+     > ```json
+     > ...
+     > "scripts": {
+     >    ...
+     >    "git:commit": "cz"
+     > }
+     > ```
+
+   - run script
+
+     > npm run git:commit
+
+## Adding a web application workspace
+
+1. Add NextJS application
+
+   > npm init -w apps/nextjs
+
+2. Add NextJS dependencies
+
+   > npm install next@latest react@latest react-dom@latest
+   > npm install --save-dev @types/react
+
+3. Add an empty tsconfig.json inside the generated app/nextjs directory
+4. Update package.json script inside the generated app/nextjs directory
+
+   > ```json
+   >  ...
+   > "scripts": {
+   >    ...
+   >    "dev": "next dev",
+   >    "build": "next build",
+   >    "start": "next start",
+   >    "lint": "next lint"
    > }
+   >
+   > ```
 
-   > npm run git:commit
+5. Update the root package.json scripts
+
+   > ```json
+   >  ...
+   > "scripts": {
+   >    ...
+   >    "dev:apps:nextjs": "npm run dev --workspace nextjs --if-present",
+   >    "build:apps:nextjs": "npm run build --workspace nextjs --if-present",
+   >    "start:apps:nextjs": "next start --workspace nextjs --if-present",
+   >    "lint:apps:nextjs": "next lint --workspace nextjs --if-present"
+   > }
+   > ```
+
+6. Run dev to update the empty tsconfig.json
+   > npm run dev:apps:nextjs
